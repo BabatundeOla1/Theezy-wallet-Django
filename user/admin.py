@@ -10,14 +10,14 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 'classes': ('wide',),
-                'fields': ("username", "usable_password", "password1", "password2", "first_name", "last_name", "email", "phone_number"),
+                'fields': ("username", "usable_password", "password1", "password2", "first_name", "last_name", "email", "phone"),
             },
         ),
     )
-    list_display = ["username", "first_name", "last_name", "email", "phone_number", "is_staff"]
-    list_filter = ["first_name", "last_name", "email", "phone_number"]
-    list_editable = ["username"]
-    search_fields = ["username", "email", "phone_number"]
+    list_display = ["username", "first_name", "last_name", "email", "phone", "is_staff"]
+    list_editable = ['first_name', 'last_name', 'email', 'phone']
+    list_display_links = ['username']
+    search_fields = ["username", "email", "phone"]
 
     def get_readonly_fields(self, request, obj=None):
         readonly_fields = list(super().get_readonly_fields(request, obj))

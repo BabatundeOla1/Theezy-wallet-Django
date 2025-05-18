@@ -19,7 +19,7 @@ from wallet.serializers import FundSerializer, TransferSerializer
 # Create your views here.
 @api_view()
 def welcome(request):
-    return Response(f"Welcome to WhitePay")
+    return Response(f"Welcome to Theezy Wallet")
 
 def greeting(request,name):
     return render(request,'hello.html',context={'name':name})
@@ -54,7 +54,7 @@ def fund_wallet(request):
         response = response_str.json()
         if response['status']:
             return Response(data=response, status=status.HTTP_200_OK)
-        return None
+        return Response({"message": "Failed to create transaction"}, status=status.HTTP_400_BAD_REQUEST)
     except requests.exceptions.RequestException as e:
         return Response({"message": "Unable to complete transaction"}, status=status.HTTP_400_BAD_REQUEST)
 
